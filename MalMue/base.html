@@ -1,0 +1,76 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" type="image/x-icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='@fortawesome/fontawesome-free/css/all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='@fortawesome/fontawesome-free/css/solid.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='@fortawesome/fontawesome-free/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css') }}">
+    {% block stylelink %}
+    {% endblock %}
+    <title>Malware Mühle</title>
+</head>
+
+<body>
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark" id="topbar">
+    <div id="logo">
+        <img src="../static/img/LogoVektor.png" class="img-circle">
+    </div>
+    <div id="brand">
+        <a class="navbar-brand" href="/">Malware Mühle</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" href="/"> <i class="fa fa-home"></i> Startseite </a></li>
+            <li class="nav-item"><a class="nav-link" href="/library"> <i class="fa fa-book"></i>
+                Bibliothek </a></li>
+            <li class="nav-item"><a class="nav-link" href="/statistics_general"> <i class="fa fa-chart-bar"></i> Statistik </a></li>
+            <li class="nav-item"><a class="nav-link" href="/enterTicket"> <i class="fa fa-file"></i> Ticketeingabe </a></li>
+            {% if session['logged_in'] %}
+                <li class="nav-item"><a class="nav-link" href="/account"> <i class="fa fa-user-tie"></i> Konto </a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="/loginregister"> <i class="fa fa-user-tie"></i> Konto </a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark" id="botbar">
+    <div id="centerposit">
+        <a href="#">
+            <i class="fa fa-map-marker-alt"></i>
+            <p>Impressum</p>
+        </a>
+        <a href="#">
+            <i class="fa fa-gavel"></i>
+            <p>Datenschutz</p>
+        </a>
+    </div>
+</nav>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{ url_for('static',filename='js/jquery-3.3.1.slim.js') }}"></script>
+<script type="module" src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.js') }}"></script>
+{% block script %}
+{% endblock %}
+</body>
+
+</html>

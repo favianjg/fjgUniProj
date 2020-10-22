@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block stylelink %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/account.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="account-container">
+        {# is the user logged in? #}
+        {% if session['logged_in'] %}
+            {# TODO user account page #}
+            <h1> Herzlich wilkommen bei der MalwareMühle! </h1>
+
+            <div class="ticketval-container">
+                <h2>Verlauf</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Tickets</th>
+                        <th scope="col">Report abrufen</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in tickets %}
+                        <tr>
+                            <td>
+                                {{ element }}
+                            </td>
+                            <td>
+                                {% if element %}
+                                    <a href="{{ url_for('getReport', ticket=element) }}">Hier klicken</a>
+                                {% else %}
+                                    Nicht vorhanden
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="passreset-container">
+                <form id="passresetform" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <h3>Passwort ändern</h3>
+                    <div class="form-group">
+                        <input id="passwordreset" name="passwordreset" type="password" class="form-control"
+                               placeholder="Passwort eingeben">
+                    </div>
+                    <div class="form-group">
+                        <input id="passwordrep" name="passwordrep" type="password" class="form-control"
+                               placeholder="Passwort wiederholen">
+                    </div>
+                    {% if weakPw %}
+                        <p class="text-center" style="color: red;">
+                            <small>Dein Passwort ist zu schwach!<br>Es sollte mindestens einen kleinen Buchstaben, einen
+                                Großbuchstaben und eine Zahl enthalten und zwischen 8 und 20 Zeichen lang sein.
+                            </small>
+                        </p>
+                    {% elif matchError %}
+                        <p class="text-center" style="color: red;">
+                            <small>Passwörter stimmen nicht überein!</small>
+                        </p>
+                    {% elif samepass %}
+                        <p class="text-center" style="color: red;">
+                            <small>Altes und neues Passwort stimmen überein</small>
+                        </p>
+                    {% elif passreset %}
+                        <p class="text-center" style="color: red;">
+                            <small>Passwort erfolgreich geändert</small>
+                        </p>
+                    {% endif %}
+                    <div class="form-group">
+                        <input id="passwordchange" type="submit" class="btnSubmit btn btn-primary" value="Passwort ändern">
+                    </div>
+                </form>
+            </div>
+
+            <div class="logout-container">
+                <h2>Ausloggen</h2>
+                <a href="{{ url_for('logout') }}">
+                    <button type="button" class="btn btn-primary">Ausloggen</button>
+                </a>
+            </div>
+
+        {% elif notauth %}
+            <p> Du bist nicht eingeloggt! </p>
+            <a href="{{ url_for('index') }}"> Klick hier um diese Seite zu verlassen </a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

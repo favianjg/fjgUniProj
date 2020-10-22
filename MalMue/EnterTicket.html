@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block stylelink %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/enterTicket.css') }}"
+          media="screen">
+
+{% endblock %}
+{% block content %}
+
+    <div class="enterTicket-container">
+        <div class="container mt-3" style="width: 60%;">
+            <div class="pt-5 text-center"><h4>Hier kannst Du Deinen Analysebericht abrufen</h4></div>
+            <div class="text-center">
+                <p class="mt-5 mb-0">Dazu gibts Du einfach das Ticket, das Du zu Beginn der Analyse erhalten hast hier
+                    ein:</p>
+                <p class="mt-1">
+                    <small>Bitte beachte, dass es eine Weile dauern kann, bis Dein Bericht fertig ist.</small>
+                </p>
+            </div>
+            <form id="ticketEntry" name="ticketEntry" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="d-flex form-group justify-content-center">
+                    <input type="text" class="form-control mt-4 mb-5" id="ticket" name="ticket"
+                           placeholder="Ticket einfügen" style="width:40%;"/>
+                    <input class="mt-4 mb-5 ml-5 btn btn-primary" type="submit" class="btnSubmit" value="Report abrufen"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

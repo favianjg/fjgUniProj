@@ -1,0 +1,73 @@
+{% extends "admin.html" %}
+
+{% block stylelink %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/userman.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/admin.css') }}">
+{% endblock %}
+
+{% block admin %}
+    <div class="userman-container">
+        <!-- ########################### -->
+        <!-- searchbar and search filter -->
+        <!-- ########################### -->
+        <div class="userman-search-filter-container">
+            <div class="userman-searchbar-container">
+                <div class="input-group input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Suchen..." aria-label="Suchen..." aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Suchen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Name
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Aufsteigend</a>
+                        <a class="dropdown-item" href="#">Absteigend</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Email
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Aufsteigend</a>
+                        <a class="dropdown-item" href="#">Absteigend</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ############## -->
+        <!-- ### Table #### -->
+        <!-- ############## -->
+        <div class="userman-table-container">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Rechte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                          <th scope="row">1</th>
+                          <td>Marco</td>
+                          <td>Marco@polo.com</td>
+                          <td>Premium</td>
+                    </tr>
+                    <tr>
+                          <th scope="row">2</th>
+                          <td>asd</td>
+                          <td>asd@asd.com</td>
+                          <td>Normal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

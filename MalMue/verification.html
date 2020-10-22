@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block stylelink %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/verification.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="verification-container">
+        {% if verified %}
+            <h3>Deine Email Adresse ist nun verifiziert!</h3>
+            <a href="{{ url_for('loginRegister') }}">Klick hier um dich einzuloggen</a>
+        {% elif wrong %}
+            <p>Der Link ist ungültig!</p>
+        {% else %}
+            <p class="text-center">Bevor Du Dich anmeldest, verifiziere bitte Deine E-Mail-Adresse, indem du auf
+                den Link drückst, den wir Dir gesendet haben.</p>
+            <p class="pt-3 text-center">Du hast noch keinen Link erhalten? Gib die E-Mail-Adresse Deines Accounts hier ein und
+                fordere einen Link an:</p>
+            <form id="requestlink" name="requestlink" method="post" enctype="multipart/form-data"
+                  action="/nowVerify">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="mh-25 d-flex form-group justify-content-center">
+                    <input type="text" id="email" name="email" class="form-control mb-5 mt-3" placeholder="E-Mail"
+                           style="width:40%;"/>
+                    <input class="ml-3 mt-3 h-50 btn btn-primary" id="button" type="submit" value="Link anfordern"/>
+                </div>
+            </form>
+        {% endif %}
+        {% if send %}
+            <p class="text-center" style="color: red;">
+                <small>E-Mail versandt!</small>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

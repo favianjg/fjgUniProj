@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% from 'pagination.html' import pagination %}
+
+{% block stylelink %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/library.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="library-container">
+        <!-- ###############-->
+        <!-- search header  -->
+        <!-- ###############-->
+        <div class="library-header-container">
+            <p>Hier werden dir die bereits abgeschlossenen anonymen Malwarescans
+                angezeigt und können nach Datum oder Gefahrensklasse gefiltert werden.<br>
+                Du kannst unsere Datenbank außerdem nach Filenamen oder Hashwert durchsuchen.</p>
+        </div>
+        <!-- ###############-->
+        <!--   searchbar    -->
+        <!-- ###############-->
+        <form method="POST" id="searchform">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="searchbar-container">
+                <h5>Filename : </h5>
+                <div class="input-group input-group mb-3">
+                    <input type="text" name="textinput" class="form-control" placeholder="Suchen..." form="searchform">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" form="searchform">Suchen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="searchbar-container">
+                <h5>MD5 oder SHA256 Hashwert : </h5>
+                <div class="input-group input-group mb-3">
+                    <input type="text" name="hashinput" class="form-control" placeholder="Suchen..." form="searchform">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" form="searchform">Suchen</button>
+                    </div>
+                </div>
+            </div>
+            <!-- ###############-->
+            <!-- search filters -->
+            <!-- ###############-->
+            <div class="search-filter-container">
+                <div class="dropdown-container">
+                    <div class="form-row align-items-center">
+                        <div class="col-auto my-1">
+                            <select name="date" class="custom-select mr-sm-2" id="inlineFormCustomSelect" form="searchform">
+                                <option selected disabled value="">Datum</option>
+                                <option value="0d">Neueste</option>
+                                <option value="1d">Seit 1 Tag</option>
+                                <option value="10d">Seit 10 Tagen</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown-container">
+                    <div class="form-row align-items-center">
+                        <div class="col-auto my-1">
+                            <select name="score" class="custom-select mr-sm-2" id="inlineFormCustomSelect" form="searchform">
+                                <option selected disabled value="">Gefahrensklasse</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-button-container">
+                    <button class="btn btn-outline-secondary" type="submit" form="searchform">Filtern</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- #################################### -->
+        <!-- ######## Search-filter-input ####### -->
+        <!-- #################################### -->
+
+        {% if filter or hash or date or type or score %}
+            <p id="search-input">Du hast gesucht nach : Filename = {{ filter }} , Hash = {{ hash }} , Datum = {{ date }} , Gefahrensklasse = {{ score }}</p>
+        {% endif %}
+
+        <!-- ############################## -->
+        <!-- ######## Search-result ####### -->
+        <!-- ############################## -->
+        <div class="search-result-container">
+            {% for item in results %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Filename : {{ item['filename'] }}</h5>
+                    <h5 class="card-title">MD5 : {{ item['md5'] }}</h5>
+                    <h5 class="card-title">SHA256 : {{ item['sha256'] }}</h5>
+                    <p class="card-text">Datum : {{ item['date'] }} , Gefahrensklasse : {{ item['score'] | round(1) }}</p>
+                    <a href={{ url_for('libdown', tid=item['task_id']) }} class="card-link">Report Herunterladen</a>
+                    <a href={{ url_for('statistics_malware', md5=item['md5']) }} class="card-link">Malware-Statistik</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- ########################### -->
+        <!-- ######## Pagination ####### -->
+        <!-- ########################### -->
+        <div class="search-pagination-container">
+           {{ pagination(page, max_pages) }}
+        </div>
+    </div>
+{% endblock %}

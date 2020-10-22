@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block stylelink %}
+    <meta http-equiv="refresh" content="15">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/notdoneyet.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="ndy-container">
+        <div class="container mt-3" style="width: 60%;">
+            <div class="pt-5 text-center"><h4>Deine Analyse läuft gerade noch!</h4></div>
+            <div class="pt-5 text-center"><h5>Du bist auf Platz {{ queuesize + 1 }} in unserer Warteschlange.</h5></div>
+            <div class="text-center">
+                <p class="mt-5 mb-0">Du kannst diese Seite einfach offen lassen und später noch einmal vorbeischauen.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

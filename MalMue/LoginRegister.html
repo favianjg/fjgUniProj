@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block stylelink %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/loginregister.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <body>
+
+    <!-- Codebase from: https://bootsnipp.com/snippets/z8aQr -->
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Anmeldung</h3>
+                <h6 class="mb-4">Hast Du bereits einen Account?</h6>
+                <form id="loginForm" name="loginForm" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <div class="form-group">
+                        <input id="emailLogin" name="emailLogin" type="text" class="form-control" placeholder="E-Mail"
+                               required/>
+                    </div>
+                    <div class="form-group">
+                        <input id="passwordLogin" name="passwordLogin" type="password" class="form-control"
+                               placeholder="Passwort" required/>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                            <a href="{{ url_for('forgotPW') }}" class="ForgetPwd">Passwort vergessen?</a>
+                        </div>
+                        <div class="form-group">
+                            <input id="loginButton" type="submit" class="btnSubmit btn btn-primary" value="Anmelden"/>
+                        </div>
+                    </div>
+                </form>
+                {% if loginError %}
+                    <p class="text-center" style="color: red;">
+                        <small>Passwort oder E-Mail falsch!</small>
+                    </p>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h3>Registrierung</h3>
+                <h6 class="mb-4">Möchtest Du einen Account erstellen?</h6>
+                <form id="registerForm" name="registerForm" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <div class="form-group">
+                        <input id="emailRegister" name="emailRegister" type="text" class="form-control"
+                               placeholder="E-Mail" required/>
+                    </div>
+                    <div class="form-group">
+                        <input id="passwordRegister" name="passwordRegister" type="password" class="form-control"
+                               placeholder="Passwort" required/>
+                    </div>
+                    <div class="form-group">
+                        <input id="passwordRepeatRegister" name="passwordRepeatRegister" type="password"
+                               class="form-control" placeholder="Passwort wiederholen" required/>
+                    </div>
+                    <div class="d-flex justify-content-end form-group">
+                        <input id="registerButton" type="submit" class="btnSubmit btn btn-primary"
+                               value="Registrieren"/>
+                    </div>
+                </form>
+                {% if matchError %}
+                    <p class="text-center" style="color: red;">
+                        <small>Passwörter stimmen nicht überein!</small>
+                    </p>
+                {% endif %}
+
+                {% if emailTaken %}
+                    <p class="text-center" style="color: red;">
+                        <small>Die angegebene E-Mail ist bereits vergeben!</small>
+                    </p>
+                {% endif %}
+
+                {% if mailFormat %}
+                    <p class="text-center" style="color: red;">
+                        <small>Die angegebene E-Mail ist ungültig!</small>
+                    </p>
+                {% endif %}
+
+                {% if weakPw %}
+                    <p class="text-center" style="color: red;">
+                        <small>Dein Passwort ist zu schwach!<br>Es sollte mindestens einen kleinen Buchstaben, einen
+                            Großbuchstaben und eine Zahl enthalten und zwischen 8 und 20 Zeichen lang sein.
+                        </small>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block stylelink %}
+{% endblock %}
+
+{% block content %}
+    {% if typeError %}
+        <div class="container mt-3" style="width: 60%;">
+            <div class="text-center">
+                <h4>Unzulässige Datei</h4>
+                <p>Ist die Datei ausführbar? z.B. .txt Dateien können nicht analysiert werden.</p>
+                <a href="{{ url_for('index') }}">Zurück zur Startseite</a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if unknownTicket %}
+        <div class="container mt-3" style="width: 60%;">
+            <div class="text-center">
+                <h4>Unbekanntes Ticket</h4>
+                <p>Das angegebene Ticket ist uns nicht bekannt.</p>
+                <a href="{{ url_for('index') }}">Zurück zur Startseite</a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if noURL %}
+        <div class="container mt-3" style="width: 60%;">
+            <div class="text-center">
+                <h4>Ungültige URL</h4>
+                <p>Die angegbene URL scheint fehlerhaft zu sein.</p>
+                <a href="{{ url_for('index') }}">Zurück zur Startseite</a>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if noOS %}
+        <div class="container mt-3" style="width: 60%;">
+            <div class="text-center">
+                <h4>Kein Betriebssystem ausgewählt</h4>
+                <p>Es wurde auf der Startseite kein Betriebssystem ausgewählt.</p>
+                <a href="{{ url_for('index') }}">Zurück zur Startseite</a>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

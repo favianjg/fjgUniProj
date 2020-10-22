@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block stylelink %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/getreport.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="getreport-container">
+        <div class="container mt-3" style="width: 60%;">
+            <div class="pt-5 text-center"><h4>Hier kannst du deinen Report und den Netzwerkverkehr herunterladen:</h4></div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Hash/URL</th>
+                    <th scope="col">Download Report-PDF</th>
+                    <th scope="col">Download Netzwerkverkehr</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for element in tasklist %}
+                    <tr>
+                        <th scope="row">{{ element[0] + 1 }}</th>
+                        <td>
+                            {{ element[1] }}
+                        </td>
+                        <td>
+                            {% if element[2] %}
+                                <a href="{{ url_for('downloadReport', ticket=ticket, index=element[0]) }}">Report-PDF herunterladen</a>
+                            {% else %}
+                                Nicht vorhanden! evtl. war die Datei nicht ausführbar
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if element[3] %}
+                                <a href="{{ url_for('downloadTcp', ticket=ticket, index=element[0]) }}">TCP-Dump herunterladen</a>
+                            {% else %}
+                                Nicht vorhanden evtl. war die Datei nicht ausführbar
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

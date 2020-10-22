@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block stylelink %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/fileupload.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-3" style="width: 60%;">
+        <div class="pt-5 text-center"><h4>Einfach und kostenlos Dateien, Links und E-Mails auf Malware überprüfen</h4>
+        </div>
+        <br>
+        <p class="text-center">Nach der Bearbeitungszeit erhältst Du von uns einen ausführlichen Bericht über die
+            Auswirkungen, die die Malware auf Dein Gerät hätte.</p>
+        <h6 class="mt-5"><u>E-Mail-Überprüfung:</u></h6>
+        <p class="mb-0">Du hast eine E-Mail erhalten und willst ihren Inhalt und Dateianhang überprüfen lassen? Dann
+            leite die verdächtige Mail einfach weiter an: </p>
+
+        <!--Javascript to prevent the full E-Mail-Adress from appearing in the HTML page as protection against e-mail-harvester -->
+        <script language="JavaScript" type="text/JavaScript">
+            var var1 = "malwaremuehle";
+            var var2 = "t-online.de";
+            var var3 = ".com";
+            var var4 = ".de";
+            var var5 = "@";
+            var var6 = "@hsalal";
+            var var7 = "ma";
+            var var8 = "il";
+            document.write('<div class=\"text-center\"><a class=\"my-4\" href=\"mailto:' + var1 + var5 + var7 + var8 + var4 + '\"><i class=\"fas fa-envelope-square\ my-4 mr-2"></i>' + var1 + var5 + var7 + var8 + var4 + '</a></div>');
+        </script>
+        <p class="mb-5 text-center">Wir werden Dir den Analysebericht schnellstmöglich an Deine E-Mail-Adresse
+            zurücksenden.</p>
+
+
+        <hr/>
+
+
+        <h6 class="mt-5"><u>Datei-Überprüfung:</u></h6>
+        <p class="mb-4">Falls Du Etwas aus dem Internet heruntergeladen hast, das Du untersuchen lassen willst, lade
+            die Datei bitte hier hoch:</p>
+        <div class="container p-y-1">
+            <div class="row m-b-1">
+                <div class="col-sm-6 offset-sm-3">
+                    <div class="form-group" style="width:101%;">
+                        <select id="os1" name="os1" class="custom-select" required form="myAwesomeDropzone"
+                                onchange="activateButton()">
+                            <option value="0">Betriebssystem auswählen:</option>
+                            <option value="1">Windows 7 Home</option>
+                            <option value="2">Windows 7 Professional</option>
+                            <option value="3">Windows 10 Home</option>
+                            <option value="4">Windows 10 Pro</option>
+                            <option value="5">Windows 10 Education</option>
+                            <option value="6">Windows 10 Pro Education</option>
+                            <option value="7">Ubuntu 18.04</option>
+                            <option value="8">Debian 9</option>
+                        </select>
+                        <div class="invalid-feedback">Es muss ein Betriebssystem ausgewählt werden.</div>
+                    </div>
+
+                    <div class="form-group inputDnD">
+                        <form class="dropzone" id="myAwesomeDropzone" name="myAwesomeDropzone"
+                              action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data">
+                            <label type="file" class="form-control-file text-primary font-weight-bold dz-message"
+                                   id="inputFile" data-title="Hier klicken oder einfach per Drag & Drop"></label>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                        </form>
+                        <div id="previews" style="display: none;"></div>
+                        <input type="submit" id="fileButton" class="btn btn-primary btn-block mb-5" value="Datei prüfen"
+                               disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <hr/>
+
+
+        <h6 class="mt-5"><u>URL-/Linküberprüfung</u></h6>
+        <p>Um eine unbekannte oder verdächtige Webseite zu prüfen, gib den entsprechenden Link einfach hier an:</p>
+        <form id="urlPost" name="urlPost" action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data">
+            <div class="container p-y-1">
+                <div class="row m-b-1">
+                    <div class="col-sm-6 offset-sm-3">
+                        <div class="form-group">
+                            <select id="os2" name="os2" class="custom-select" required onchange="activateButtonURL()">
+                                <option value="0">Betriebssystem auswählen:</option>
+                                <option value="1">Windows 7 Home</option>
+                                <option value="2">Windows 7 Professional</option>
+                                <option value="3">Windows 10 Home</option>
+                                <option value="4">Windows 10 Pro</option>
+                                <option value="5">Windows 10 Education</option>
+                                <option value="6">Windows 10 Pro Education</option>
+                                <option value="7">Ubuntu 18.04</option>
+                                <option value="8">Debian 9</option>
+                            </select>
+                            <div class="invalid-feedback">Es muss ein Betriebssystem ausgewählt werden.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="d-flex form-group justify-content-center">
+                <input type="text" id="url" name="url" class="form-control mb-5" placeholder="Link einfügen"
+                       style="width:40%;"/>
+                <input class="mb-5 ml-5 btn btn-primary" id="urlButton" type="submit" value="Link prüfen" disabled/>
+            </div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        </form>
+        <hr/>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static',filename='js/jquery-3.3.1.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/dropzone.js') }}"></script>
+    <script>
+        Dropzone.options.myAwesomeDropzone = {
+            //maxFileSize : 4,
+            parallelUploads: 1,
+            uploadMultiple: true,
+            autoProcessQueue: false,
+            addRemoveLinks: false,
+            dictResponseError: "test",
+            previewsContainer: "#previews",
+            maxFiles: 1,
+            init: function () {
+                var submitButton = document.querySelector("#fileButton");
+                myDropzone = this;
+                submitButton.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue();
+                });
+                this.on('addedfile', function (file) {
+                    var a = document.getElementById("inputFile");
+                    a.setAttribute("data-title", file.name);
+                });
+                this.on('complete', function (ticket) {
+                    var url = "/analysisStarted/";
+                    if (ticket.xhr.responseText === "Error") {
+                        window.location = "/typeError"
+                    } else {
+                        url = url.concat(ticket.xhr.responseText);
+                        window.location = url;
+                    }
+                });
+                this.on("sendingmultiple", function (data, xhr, formData) {
+                    formData.append("os1", jQuery("#os1").val());
+                });
+            },
+        };
+    </script>
+
+    <script>
+        function activateButton() {
+            var e = document.getElementById("os1");
+            var selectedValue = e.options[e.selectedIndex].value;
+            if (selectedValue > 0) {
+                document.getElementById("fileButton").removeAttribute("disabled");
+            } else {
+                document.getElementById("fileButton").disabled = true;
+            }
+        }
+    </script>
+
+    <script>
+        function activateButtonURL() {
+            var e = document.getElementById("os2");
+            var selectedValue = e.options[e.selectedIndex].value;
+            if (selectedValue > 0) {
+                document.getElementById("urlButton").removeAttribute("disabled");
+            } else {
+                document.getElementById("urlButton").disabled = true;
+            }
+        }
+    </script>
+
+{% endblock %}

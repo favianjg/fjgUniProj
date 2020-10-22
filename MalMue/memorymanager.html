@@ -1,0 +1,59 @@
+{% extends "admin.html" %}
+
+{% block stylelink %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/admin.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/memoman.css') }}">
+{% endblock %}
+
+{% block admin %}
+<div class="memory-container">
+    <div class="memoman-filter-container">
+        <div class="dropdown-container">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    VM-Name
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Aufsteigend</a>
+                    <a class="dropdown-item" href="#">Absteigend</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Freier Speicherraum
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Aufsteigend</a>
+                    <a class="dropdown-item" href="#">Absteigend</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="memoman-table-container">
+        <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">VM-Name</th>
+                        <th scope="col">Belegter Speicher</th>
+                        <th scope="col">Freier Speicher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Windows 10</td>
+                      <td>2 GB</td>
+                      <td>5.4 GB</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Windows 7</td>
+                      <td>5 GB</td>
+                      <td>2.4 GB</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
