@@ -1,5 +1,11 @@
-# MalMue
-School Project for 5th Semester
+# HTML Files
 
-# Machine Learning
-Added code snippets from practical lessons for machine learning classes
+Code Snippets for the website used in project. Using jinja and flask as base.
+
+# FileUpload javascript
+
+For uploading files to the database. Using javascript as base.
+
+# Routes python
+
+Define the url routes and methods to access the website
