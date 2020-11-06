@@ -1,0 +1,75 @@
+@charset "ISO-8859-1";
+
+#addressform label{
+	display: table-cell;
+	text-align: left;
+}
+
+#addressform input{
+	text-align: right;
+	margin: 1.2%;
+}
+
+#addressform button{
+	margin-top: 10%;
+}
+
+.deladdress{
+	margin-top: 8%;
+	margin-bottom: 0.5%;
+}
+
+.address-container{
+	margin-left: 2%;
+	display: inline-block;
+	position: relative;
+}
+
+.address-container > h2{
+	margin-bottom: 20%;
+}
+
+.addressform-container{
+	margin-left: 2%;
+	display: inline-block;
+	margin-bottom: 15%;
+}
+
+.addresslist-container{
+	positon: absolute;
+	width: 100%;
+	left: 150%;
+	top: 20%;
+}
+
+.addresslist-container .addrselect{
+	margin: 1.2%;
+	text-align: left;
+}
+
+.bestellung{
+	margin-top: 5%;
+}
+
+.purchased-container table, th, td {
+    border: 3px solid black;
+    margin: 3%;
+    padding: 0.7%;
+}
+
+#bild{
+	width: 10%;
+}
+
+td > img{
+	width: 100%;
+}
+
+#logoutheader{
+	margin-left: 1.2%;
+}
+
+#logoutbtn{
+	padding : 0.4%;
+	margin-left : 1.2%;
+}

@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+
+.text > a{
+	text-decoration: none;
+	color: #009999;
+	padding-left: 1%;
+}
+.kk{
+	margin-top: 6%;
+	margin-bottom: 2%;
+	margin-left: 3%;
+}
+.platz{
+	margin-left: 3%;
+}
+
+label{
+	width: 20%;
+	clear: left;
+	text-align: right;
+	padding-rigth: 1%;
+}
+input, label{
+	float: left;
+}
+
+

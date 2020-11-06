@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="CSS/main.css">
+<link rel="stylesheet" href="CSS/agb_faq_contact.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous">
+</script> <!-- this script is used for the free-to-use icons provided by the website font-awesome. Thus removing any hassle on having to meddle with searching for our own symbols -->
+<!-- for a list of available icons and symbols please refer to : https://fontawesome.com/ -->
+<title>&ltBODY&gt und Kleid - AGB</title>
+</head>
+<body>
+<!-- ############################################################################################### -->
+<!-- 									Header													 -->
+<!-- ############################################################################################### -->
+
+<div class="header-container"><!-- specifies an area on which the header sits-->
+<!-- IMPORTANT! always make a conainer as a base for whatever it is that is not a "title"(for a example a small header. Refer to discount-container for reference to this special case) -->
+<!-- By default, EVERYTHING should be INSIDE a container, what you call the container is not important -->
+	<a class="background" href="index.html"> <!--we want the link to be an entire banner a.k.a. will later be changed to img src when the icon is done by Kathy-->
+			<h1>&ltBODY&gt und Kleid</h1>
+	</a>
+<!-- div vs span explanation :
+	 div is a block area (not just a part, but an area)
+	 span is an "inline" parts of something(still needs to specify inline block to make css understand) -->
+	<span class="login"> <!--span is preferred here since we are working on an element that will be a part of another element. Hence it is not a "block" of elements-->
+		<a href="login_register.html">
+			Anmelden
+		</a>
+	</span>
+	
+	<button id="shopcart" type="button">
+		<i class="fas fa-cart-plus fa-lg"></i> <!--icons summoned from the depths of font awesome's website-->
+	</button>
+	<script type="text/javascript"> <!--a javascript to make the shopcart button jump to shopcart site on click-->
+		document.getElementById("shopcart").onclick = function(){ <!--call the button and add the attribute onclick, then defines a function-->
+			location.href = "shopcart.html" <!--specifies a location using a link-->
+		}
+	</script>
+
+</div>
+
+<!-- ############################################################################################### -->
+<!-- 									Menu													 -->
+<!-- ############################################################################################### -->
+
+<div class="menu-container">
+	
+	<span class="menubar">
+		<span class="dropdown-f">
+			 <!-- each dropdown needs a "container" per parts -->
+			<a href="clothes.html">
+				Damen
+				<!-- used to create a whitespace between symbol and the text,refer to the css main.css to see full description -->
+				<span class="whitespace"></span>
+				<i class="fas fa-female"></i>
+			</a> <!-- we cover the entire "area" as a link based element with the a tags. This produces the result that the entire area is a link -->
+			
+			<span class="dropcontent-f"> <!--each dropdown-content needs their own "container" as well -->
+				<a href="clothes.html">Dress</a>
+				<a href="clothes.html">Rock</a>
+			</span>
+		</span>	
+		
+		<span class="dropdown-m">
+			<a href="clothes.html">
+				Herren
+				<span class="whitespace"></span>
+				<i class="fas fa-male"></i>
+			</a>
+			
+			<span class="dropcontent-m">
+				<a href="clothes.html">Anzug</a>
+				<a href="clothes.html">Krawate</a>
+			</span>
+		</span>
+		
+		<span class="dropdown-c">
+			<a href="clothes.html">
+				Kinder
+				<span class="whitespace"></span>
+				<i class="fas fa-child"></i>
+			</a>
+			
+			<span class="dropcontent-c">
+				<a href="clothes.html">Schuhe</a>
+				<a href="clothes.html">Shirts</a>
+			</span>
+		</span>		
+	</span>
+	
+	<span class="searchbar">
+		<form id="searchform"> 
+<!-- form tags are mainly used to implement something that requires user input and a button. In this case, the search input field + button -->
+<!--IMPORTANT! to whoever makes the login site, FORM tags are very important to use with whatever requires an input field and a button
+	please use the form tags as it is easier to implements php and javascript file later for the database -->
+			<span class="searchfield">
+				<input type="text" placeholder="Search..." name="search">
+			</span>
+			<button class="searchbtn" type="submit">
+				<i class="fa fa-search"></i>
+			</button>
+		</form>
+	</span>
+	
+</div>
+<!-- Diffrent from every other page START-->
+<div class="para">
+	<h2>
+		 ALGEMEINE GESCHÄFTSBEDINGUNGEN
+	</h2>
+	<h3>
+		 ELEKTRONISCHE KOMMUNIKATION
+	</h3>
+	<p>
+		Wenn Sie einen Amazon Service nutzen oder E-Mails, Textnachrichten oder andere Mitteilungen von Ihrem Computer oder Ihrem mobilen Gerät an uns senden, kommunizieren Sie mit uns elektronisch. Wir werden mit Ihnen auf verschiedene Art und Weise elektronisch kommunizieren, z.B. über E-Mail, Textnachrichten, In-App Push Nachrichten oder auch durch die Veröffentlichung elektronischer Nachrichten oder sonstiger Kommunikation auf unserer Webseite oder im Rahmen anderer Amazon Services, wie etwa dem Message Center. Für vertragliche Zwecke stimmen Sie zu, elektronische Kommunikation von uns zu erhalten und Sie stimmen zu, dass alle Zustimmungen, Benachrichtigungen, Veröffentlichungen und andere Kommunikation, die wir Ihnen elektronisch mitteilen insofern keine Schriftform erfordern, es sei denn zwingend anzuwendende gesetzliche Vorschriften erfordern eine andere Form der Kommunikation.
+	</p>
+	<h3>
+		URHEBERRECHT UND DATENBANKRECHTE
+	</h3>
+	<p>
+		Der gesamte Inhalt der in einem Amazon Service enthalten oder durch ihn bereitgestellt wird, wie Text, Grafik, Logos, Button-Icons, Bilder, Audio-Clips, digitale Downloads und Datensammlungen, ist Eigentum von Amazon oder von Dritten, die Inhalte zuliefern oder auf der Webseite bereitstellen, und ist durch luxemburgisches und internationales Urheberrecht und Datenbankrecht geschützt. Auch der Gesamtbestand der Inhalte der in einem Amazon Service enthalten oder durch ihn bereitgestellt wird ist ausschließliches Eigentum von Amazon und ist durch luxemburgisches und internationales Urheberrecht und Datenbankrecht geschützt.
+	</p>
+	<p>	
+		Sie dürfen ohne unsere ausdrückliche schriftliche Zustimmung nicht Teile eines Amazon Services systematisch extrahieren und/oder wiederverwenden. Insbesondere dürfen Sie ohne die ausdrückliche schriftliche Zustimmung von Amazon.de kein Data Mining, keine Robots oder ähnliche Datensammel- und Extraktionsprogramme einsetzen, um irgendwelche wesentlichen Teile eines Amazon Services zur Wiederverwendung zu extrahieren (gleichgültig ob einmalig oder mehrfach). Sie dürfen ferner ohne die ausdrückliche schriftliche Zustimmung von Amazon.de keine eigene Datenbank herstellen und/oder veröffentlichen, die wesentliche Teile eines Amazon Services (z. B. unsere Preise und Produktinformationen) beinhaltet.
+	</p>
+	<h3>
+		MARKEN- UND KENNZEICHENRECHTE
+	</h3>
+	<p>
+		Klicken Sie hier, um eine nicht abschließende Liste der Marken- und Kennzeichenrechte von Amazon einzusehen. Darüber hinaus stellen Amazon.de's Grafiken, Logos, Kopfzeilen, Button-Icons, Scripts und Service-Namen, die in einem Amazon Service enthalten oder durch ihn bereitgestellt werden, Marken- und Kennzeichenrechte von Amazon dar. Amazons Marken- und Kennzeichenrechte dürfen nicht in Verbindung mit einem Produkt oder Service, der nicht zu Amazon gehört, in einer Weise verwendet werden, dass die Möglichkeit besteht, Zuordnungsverwechslung bei Kunden zu verursachen, oder in einer Weise, die Amazon herabsetzt oder diskreditiert. Alle anderen Marken und Kennzeichen, die nicht im Eigentum von Amazon stehen und in einem Amazon Service erscheinen, sind Eigentum der jeweiligen Inhaber.
+	</p>
+	<h3>
+		IHR KONTO
+	</h3>
+	<p style="margin-bottom: 5%">
+		Wenn Sie einen Amazon Service nutzen, sind Sie für die Sicherstellung der Vertraulichkeit Ihres Kontos und Passworts und für die Beschränkung des Zugangs zu Ihrem Computer und Ihren mobilen Geräten verantwortlich und soweit unter anwendbarem Recht zulässig, erklären Sie sich damit einverstanden, für alle Aktivitäten verantwortlich zu sein, die über Ihr Konto oder Passwort vorgenommen werden. Sie sollten alle erforderlichen Schritte unternehmen, um sicherzustellen, dass Ihr Passwort geheim gehalten und sicher aufbewahrt wird und Sie sollten uns unverzüglich informieren, wenn Sie Anlass zur Sorge haben, dass ein Dritter Kenntnis von Ihrem Passwort erlangt hat oder das Passwort unautorisiert genutzt wird oder dies wahrscheinlich ist. Sie sind dafür verantwortlich, sicherzustellen, dass Ihre Angaben an uns korrekt und vollständig sind und Sie uns von jeglichen Änderungen hinsichtlich der von Ihnen gegebenen Informationen in Kenntnis setzen. Sie können viele der Informationen, die Sie uns gegeben haben, sowie Ihre Kontoeinstellungen in dem Bereich Mein Konto der Webseite einsehen und aktualisieren. Sie dürfen einen Amazon Service nicht verwenden: (i) in einer Weise, die dazu geeignet ist, den Amazon Service oder den Zugang dazu zu unterbrechen, zu beschädigen oder in sonstiger Art zu beeinträchtigen, oder (ii) für betrügerische Zwecke oder in Verbindung mit einer Straftat oder rechtswidrigen Aktivität oder (iii) um Belästigung, Unannehmlichkeiten oder Angst zu verursachen. Wir behalten uns das Recht vor, Ihnen Services auf der Webseite vorzuenthalten oder Mitgliedskonten zu schließen. Das gilt insbesondere für den Fall, dass Sie gegen anwendbares Recht, vertragliche Vereinbarungen oder unsere Richtlinien verstoßen.
+	</p>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Diffrent from every other page END -->
+<!-- ############################################################################################### -->
+<!-- 									Footer													 -->
+<!-- ############################################################################################### -->
+
+<div class="footer-container">
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>FAQ</b></p>
+		</span>
+		<hr class="linebreak"> <!-- creates the grey lines between title and content -->
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-question-circle fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="faq.html">FAQ</a>
+		</span>
+	</span>
+	
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>AGB</b></p>
+		</span>
+		<hr class="linebreak">
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-clipboard-list fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="agb.html">AGB</a>
+		</span>
+	</span>
+	
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>Impressum</b></p>
+		</span>
+		<hr class="linebreak">
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-envelope fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="contact.html">Impressum</a>
+		</span>
+	</span>
+</div>
+
+</body>
+</html>

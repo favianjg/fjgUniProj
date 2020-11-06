@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+h2{
+	text-align: center;
+}
+h3{
+	text-align: center;
+}
+.para > p{
+	margin: auto;
+	width: 50%;
+}
+.question{
+	font-weight: bold;
+	margin-left: 5%;
+}
+.answer{
+	font-weight: normal;
+	margin-left: 10%;
+	margin-bottom: 5%;
+}
+.info{
+	font-weight: normal;
+	margin-left: 5%;
+	margin-bottom: 5%;
+}

@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+label {
+    width:20%;
+    clear:left;
+    text-align:right;
+    padding-right:1%;
+}
+input, label {
+    float:left;
+}

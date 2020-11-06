@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="CSS/main.css">
+<script src="JS/jquery-3.3.1.min.js"></script>
+<script src="JS/jquery.session.js"></script>
+<script src="JS/js.cookie.js"></script>
+<script src="JS/searchscript.js"></script>
+<script src="JS/login_out.js"></script>
+<script src="JS/categoryclick.js"></script>
+
+<script src="JS/index.js"></script>
+<script defer src="JS/fontawesome-all.js"></script>
+<!-- this script is used for the free-to-use icons provided by the website font-awesome. Thus removing any hassle on having to meddle with searching for our own symbols -->
+<!-- for a list of available icons and symbols please refer to : https://fontawesome.com/ -->
+
+
+<title>&ltBODY&gt und Kleid</title>
+
+</head>
+<body>
+
+<!-- ############################################################################################### -->
+<!-- 									Header													 -->
+<!-- ############################################################################################### -->
+
+<div class="header-container"><!-- specifies an area on which the header sits-->
+<!-- IMPORTANT! always make a conainer as a base for whatever it is that is not a "title"(for a example a small header. Refer to discount-container for reference to this special case) -->
+<!-- By default, EVERYTHING should be INSIDE a container, what you call the container is not important -->
+	<a class="background" href="index.html"> <!--we want the link to be an entire banner a.k.a. will later be changed to img src when the icon is done by Kathy-->
+			<h1>&ltBODY&gt und Kleid</h1>
+	</a>
+<!-- div vs span explanation :
+	 div is a block area (not just a part, but an area)
+	 span is an "inline" parts of something(still needs to specify inline block to make css understand) -->
+	<span class="login"> <!--span is preferred here since we are working on an element that will be a part of another element. Hence it is not a "block" of elements-->
+		<a id="logintext" href="login_register.html">
+			Anmelden
+		</a>
+	</span>
+	
+	<button id="shopcart" type="button">
+		<i class="fas fa-cart-plus fa-lg"></i> <!--icons summoned from the depths of font awesome's website-->
+	</button>
+	<script type="text/javascript"> <!--a javascript to make the shopcart button jump to shopcart site on click-->
+		document.getElementById("shopcart").onclick = function(){ <!--call the button and add the attribute onclick, then defines a function-->
+			location.href = "shopcart.html" <!--specifies a location using a link-->
+		}
+	</script>
+
+</div>
+
+<!-- ############################################################################################### -->
+<!-- 									Menu													 -->
+<!-- ############################################################################################### -->
+
+<div class="menu-container">
+	
+	<span class="menubar">
+		<span class="dropdown-f">
+			 <!-- each dropdown needs a "container" per parts -->
+			<a id="damen" href="clothes.html">
+				Damen
+				<!-- used to create a whitespace between symbol and the text,refer to the css main.css to see full description -->
+				<span class="whitespace"></span>
+				<i class="fas fa-female"></i>
+			</a> <!-- we cover the entire "area" as a link based element with the a tags. This produces the result that the entire area is a link -->
+			
+			<span class="dropcontent-f"> <!--each dropdown-content needs their own "container" as well -->
+				<a id="damenkl" href="clothes.html">Kleider</a>
+				<a id="damenrc" href="clothes.html">Röcke</a>
+			</span>
+		</span>	
+		
+		<span class="dropdown-m">
+			<a id="herren" href="clothes.html">
+				Herren
+				<span class="whitespace"></span>
+				<i class="fas fa-male"></i>
+			</a>
+			
+			<span class="dropcontent-m">
+				<a id="herrenan" href="clothes.html">Anzüge</a>
+				<a id="herrenkr" href="clothes.html">Krawatten</a>
+			</span>
+		</span>
+		
+		<span class="dropdown-c">
+			<a id="kinder" href="clothes.html">
+				Kinder
+				<span class="whitespace"></span>
+				<i class="fas fa-child"></i>
+			</a>
+			
+			<span class="dropcontent-c">
+				<a id="kindersc" href="clothes.html">Schuhe</a>
+				<a id="kindersh" href="clothes.html">Shirts</a>
+			</span>
+		</span>		
+	</span>
+	
+	<span class="searchbar">
+		<form id="searchform">
+<!-- form tags are mainly used to implement something that requires user input and a button. In this case, the search input field + button -->
+<!--IMPORTANT! to whoever makes the login site, FORM tags are very important to use with whatever requires an input field and a button
+	please use the form tags as it is easier to implements php and javascript file later for the database -->
+			<input type="text" placeholder="Search..." id="searchinput">
+			<button id="searchbtn" type="submit" form="searchform">
+				<i class="fas fa-search fa-lg"></i>
+			</button>
+		</form>
+	</span>
+</div>
+
+<!-- ############################################################################################### -->
+<!-- 									Slideshow													 -->
+<!-- ############################################################################################### -->
+<div class="slideshow-container"> <!-- Slideshow mainly the same as the one in w3school with a little bit of change -->
+
+<div class="homeSlides fade">
+  <img src="pics/bunte-kleidung-t-shirts.jpg" style="width:100%">
+</div>
+
+<div class="homeSlides fade">
+  <img src="pics/bunte-kleidung-t-shirts.jpg" style="width:100%">
+</div>
+
+<div class="homeSlides fade">
+  <img src="pics/bunte-kleidung-t-shirts.jpg" style="width:100%">
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+
+<!-- Picture source: -->
+<!-- http://www.farben-abc.de/wp-content/uploads/2014/10/bunte-kleidung-t-shirts.jpg -->
+<!-- http://www.buffed.de/screenshots/original/2017/01/Final-Fantasy-15-Gladio-Kleidung-buffed.jpg -->
+
+<!-- javascript client-side to realize the slideshow -->
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("homeSlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {
+	  slideIndex = 1
+	}
+  if (n < 1) {
+	  slideIndex = slides.length
+	}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+<!-- ############################################################################################### -->
+<!-- 									Discount													 -->
+<!-- ############################################################################################### -->
+
+<h2 class="deals">Vorschläge</h2> <!-- we separate the header here because we are using flexbox as the display for discount-container -->
+<div class="discount-container"> <!-- flexbox is preferred here, could also be replaced with display block/inline-block but they are not as functional  -->
+	<!-- <a class="discountlink" href="clothes.html">
+		<span class="discount-content">
+			<h3>Herren Shirt</h3>
+			<img src="pics/shirt.jpg">
+			<h3>Beschreibung</h3>
+		</span>
+	</a>
+	<a class="discountlink" href="clothes.html">
+		<span class="discount-content">
+			<h3>Herren Shirt</h3>
+			<img src="pics/shirt.jpg">
+			<h3>Beschreibung</h3>
+		</span>
+	</a>
+	<a class="discountlink" href="clothes.html">
+		<span class="discount-content">
+			<h3>Herren Shirt</h3>
+			<img src="pics/shirt.jpg">
+			<h3>Beschreibung</h3>
+		</span>
+	</a>
+	<a class="discountlink" href="clothes.html">
+		<span class="discount-content">
+			<h3>Herren Shirt</h3>
+			<img src="pics/shirt.jpg">
+			<h3>Beschreibung</h3>
+		</span>
+	</a>
+	<a class="discountlink" href="clothes.html">
+		<span class="discount-content">
+			<h3>Herren Shirt</h3>
+			<img src="pics/shirt.jpg">
+			<h3>Beschreibung</h3>
+		</span>
+	</a> -->
+	
+	<figure class="gesamt">
+		<figure class="einzel">
+			<a href="article.html"><img src="pics/shirt.jpg"></a>
+			<a href="article.html"><figcaption>Schönes Shirt 19,99 &#8364 <br> Rot, Blau, Grün <br>S, M, L</figcaption></a>
+		</figure>
+		<figure class="einzel">
+			<a href="article.html"><img src="pics/shirt.jpg"></a>
+			<a href="article.html"><figcaption>Schönes Shirt 19,99 &#8364 <br> Rot, Blau, Grün <br>S, M, L</figcaption></a>
+		</figure>
+		<figure class="einzel">
+			<a href="article.html"><img src="pics/shirt.jpg"></a>
+			<a href="article.html"><figcaption>Schönes Shirt 19,99 &#8364 <br> Rot, Blau, Grün <br>S, M, L</figcaption></a>
+		</figure>
+		<figure class="einzel">
+			<a href="article.html"><img src="pics/shirt.jpg"></a>
+			<a href="article.html"><figcaption>Schönes Shirt 19,99 &#8364 <br> Rot, Blau, Grün <br>S, M, L</figcaption></a>
+		</figure>
+	</figure>
+</div>
+
+<!-- pics/shirt.jpg -->
+<!-- Picture source -->
+<!-- https://assets.academy.com/mgen/34/20088434.jpg?is=500,500 -->
+
+<!-- ############################################################################################### -->
+<!-- 									About us													 -->
+<!-- ############################################################################################### -->
+
+<div class="aboutus-container">
+	<h2>Über uns</h2>
+	<p>Wir sind ein Team von professionellen Designern. <br>
+	   Wir benutzen 100% organische und natürliche Materialien für unsere Kollektionen.</p>
+</div>
+
+<!-- ############################################################################################### -->
+<!-- 									Footer													 -->
+<!-- ############################################################################################### -->
+
+<div class="footer-container">
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>FAQ</b></p>
+		</span>
+		<hr class="linebreak"> <!-- creates the grey lines between title and content -->
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-question-circle fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="faq.html">FAQ</a>
+		</span>
+	</span>
+	
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>AGB</b></p>
+		</span>
+		<hr class="linebreak">
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-clipboard-list fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="agb.html">AGB</a>
+		</span>
+	</span>
+	
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>Impressum</b></p>
+		</span>
+		<hr class="linebreak">
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-envelope fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="contact.html">Impressum</a>
+		</span>
+	</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="CSS/main.css">
+<link rel="stylesheet" href="CSS/thankyou.css">
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous">
+</script> <!-- this script is used for the free-to-use icons provided by the website font-awesome. Thus removing any hassle on having to meddle with searching for our own symbols -->
+<!-- for a list of available icons and symbols please refer to : https://fontawesome.com/ -->
+
+<title>&ltBody&gt und Kleid - Dankeschön!</title>
+
+</head>
+<body>
+<!-- ############################################################################################### -->
+<!-- 									Header													 -->
+<!-- ############################################################################################### -->
+
+<div class="header-container"><!-- specifies an area on which the header sits-->
+<!-- IMPORTANT! always make a conainer as a base for whatever it is that is not a "title"(for a example a small header. Refer to discount-container for reference to this special case) -->
+<!-- By default, EVERYTHING should be INSIDE a container, what you call the container is not important -->
+	<a class="background" href="index.html"> <!--we want the link to be an entire banner a.k.a. will later be changed to img src when the icon is done by Kathy-->
+			<h1>&ltBODY&gt und Kleid</h1>
+	</a>
+<!-- div vs span explanation :
+	 div is a block area (not just a part, but an area)
+	 span is an "inline" parts of something(still needs to specify inline block to make css understand) -->
+	<span class="login"> <!--span is preferred here since we are working on an element that will be a part of another element. Hence it is not a "block" of elements-->
+		<a href="login_register.html">
+			Anmelden
+		</a>
+	</span>
+	
+	<button id="shopcart" type="button">
+		<i class="fas fa-cart-plus fa-lg"></i> <!--icons summoned from the depths of font awesome's website-->
+	</button>
+	<script type="text/javascript"> <!--a javascript to make the shopcart button jump to shopcart site on click-->
+		document.getElementById("shopcart").onclick = function(){ <!--call the button and add the attribute onclick, then defines a function-->
+			location.href = "shopcart.html" <!--specifies a location using a link-->
+		}
+	</script>
+
+</div>
+
+<!-- ############################################################################################### -->
+<!-- 									Menu													 -->
+<!-- ############################################################################################### -->
+
+<div class="menu-container">
+	
+	<span class="menubar">
+		<span class="dropdown-f">
+			 <!-- each dropdown needs a "container" per parts -->
+			<a href="clothes.html">
+				Damen
+				<!-- used to create a whitespace between symbol and the text,refer to the css main.css to see full description -->
+				<span class="whitespace"></span>
+				<i class="fas fa-female"></i>
+			</a> <!-- we cover the entire "area" as a link based element with the a tags. This produces the result that the entire area is a link -->
+			
+			<span class="dropcontent-f"> <!--each dropdown-content needs their own "container" as well -->
+				<a href="clothes.html">Dress</a>
+				<a href="clothes.html">Rock</a>
+			</span>
+		</span>	
+		
+		<span class="dropdown-m">
+			<a href="clothes.html">
+				Herren
+				<span class="whitespace"></span>
+				<i class="fas fa-male"></i>
+			</a>
+			
+			<span class="dropcontent-m">
+				<a href="clothes.html">Anzug</a>
+				<a href="clothes.html">Krawate</a>
+			</span>
+		</span>
+		
+		<span class="dropdown-c">
+			<a href="clothes.html">
+				Kinder
+				<span class="whitespace"></span>
+				<i class="fas fa-child"></i>
+			</a>
+			
+			<span class="dropcontent-c">
+				<a href="clothes.html">Schuhe</a>
+				<a href="clothes.html">Shirts</a>
+			</span>
+		</span>		
+	</span>
+	
+	<span class="searchbar">
+		<form id="searchform"> 
+<!-- form tags are mainly used to implement something that requires user input and a button. In this case, the search input field + button -->
+<!--IMPORTANT! to whoever makes the login site, FORM tags are very important to use with whatever requires an input field and a button
+	please use the form tags as it is easier to implements php and javascript file later for the database -->
+			<span class="searchfield">
+				<input type="text" placeholder="Search..." name="search">
+			</span>
+			<button class="searchbtn" type="submit">
+				<i class="fa fa-search"></i>
+			</button>
+		</form>
+	</span>
+	
+</div>
+
+
+
+<div class="thanks">
+	<h1>Dankeschön!</h1>
+</div>
+<div class="thanku">
+	Vielen Dank für deinen Einkauf!
+</div>
+<div class="thanku"> 
+	<a href="index.html">
+		Weiter Einkaufen
+	</a>
+</div>
+
+
+
+
+
+<!-- ############################################################################################### -->
+<!-- 									Footer													 -->
+<!-- ############################################################################################### -->
+
+<div class="footer-container">
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>FAQ</b></p>
+		</span>
+		<hr class="linebreak"> <!-- creates the grey lines between title and content -->
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-question-circle fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="faq.html">FAQ</a>
+		</span>
+	</span>
+	
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>AGB</b></p>
+		</span>
+		<hr class="linebreak">
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-clipboard-list fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="agb.html">AGB</a>
+		</span>
+	</span>
+	
+	<span class="footerblock">
+		<span class="footertitle">
+			<p><b>Impressum</b></p>
+		</span>
+		<hr class="linebreak">
+		<span class="footercontent">
+			<span class="hideicon">
+				<i class="fas fa-envelope fa-sm"></i>
+			</span>
+			<span class="whitespace"></span>
+			<a class="footertext" href="contact.html">Impressum</a>
+		</span>
+	</span>
+</div>
+
+</body>
+</html>

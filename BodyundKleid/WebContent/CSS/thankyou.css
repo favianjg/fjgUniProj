@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+.thanks{
+	text-align: center;
+	margin-top: 8%;
+	margin-bottom: 3%;
+	color: #009999;
+	
+}
+.thanku{
+	text-align: center;
+	margin-bottom: 6%;
+	
+}
+.thanku > a{
+	text-decoration: none;
+	color: black;
+	padding: 1%;
+	background-color: #009999;
+}
+

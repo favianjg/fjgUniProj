@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+.bild{
+	
+	margin-bottom: 3%;
+	height: 10%;
+	width: 30%;
+	margin-left: 3%;
+	margin-right: 1.5%;
+}
+.preis{
+	margin-left: 10%;
+}
+
+.schrift{
+	margin-left: 5%;
+}
+
+.schrift > a{
+	text-decoration: none;
+	color: black;
+}
+
+.schrift > a:hover{
+	color: blue;
+}
+
+.bewerten{
+	margin-top: 15%;
+	margin-left: 5%
+}

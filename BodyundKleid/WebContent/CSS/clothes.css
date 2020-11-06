@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+
+.überschrift{
+	text-decoration: none;
+	color: black;
+}
+
+.überschrift:hover{
+	color: blue;
+}
+
+.überschrift > h2{
+	margin-left: 3%;
+}
+
+figure,
+figcaption {
+	margin: 0;
+	margin-left: 1.8%;
+	padding: 0;
+}
+
+figure.einzel {
+	position: relative;
+	display: inline-block;
+	width: 15%;
+	padding: 10px;
+	margin-right: 3%;
+}
+
+figure img {
+	width: 100%;
+	display: block;
+	margin-right: 10px;
+	margin-bottom: 40px;
+}
+
+figcaption {
+	position: absolute;
+	bottom: 10%;
+	width: 100%;
+	text-align: center;
+	line-height: 1em;
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.gesamt {
+	position: relative;
+	color: black;
+	background: white;
+}
+
+.text {
+	position: absolute;
+	top: 150px;
+	right: 100px;
+}
+
+.seitenauswahl{
+	position: absolute;
+	left: 25%;
+}
+
+.seitenauswahl >a {
+	margin:5px;
+}
